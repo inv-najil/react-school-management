@@ -16,7 +16,7 @@ export default function RegisterStudent() {
   const { register, handleSubmit, formState: { errors },watch } = useForm();
   const [teachers, setTeachers] = useState([]);
   const navigate = useNavigate();
-  const password = watch(password)
+  const password = watch("password")
 
 
   useEffect(() => {

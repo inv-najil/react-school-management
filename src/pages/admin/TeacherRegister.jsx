@@ -19,7 +19,7 @@ export default function RegisterTeacher() {
         formState: { errors },
         watch
     } = useForm();
-    const password = watch(password)
+    const password = watch("password")
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
