@@ -1,27 +1,40 @@
 # dependencies
-node_modules/
+/node_modules
 
 # production build
-dist/
-build/
+/dist
+/build
 
-# misc
-.DS_Store
+# environment variables
 .env
 .env.local
+.env.*.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# log files
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-# editor/IDE folders
+# testing
+coverage/
+
+# misc
+.DS_Store
+*.tgz
+
+# editor/IDE
 .vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # OS-generated
 Thumbs.db
+ehthumbs.db
