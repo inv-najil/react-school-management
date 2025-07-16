@@ -29,6 +29,7 @@ export default function RegisterStudent() {
         setTeachers([]);
       });
   }, []);
+  
 
   const onSubmit = async (data) => {
     try {
@@ -52,7 +53,7 @@ export default function RegisterStudent() {
           Register Student
         </Typography>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <TextField fullWidth label="Username" {...register("username", { required: "Username is required" })} margin="normal" />
           <TextField fullWidth label="Email" {...register("email", { required: "email is required", pattern:{
             value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
@@ -86,7 +87,7 @@ export default function RegisterStudent() {
           >
             {teachers.map((teacher) => (
               <MenuItem key={teacher.id} value={teacher.id}>
-                {teacher.user?.username || teacher.employee_id}
+                {`${teacher.first_name || ""} - ${teacher.employee_id}`}
               </MenuItem>
             ))}
           </TextField>

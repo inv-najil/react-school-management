@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
+import DashboardLayout from "../components/DashboardLayout";
 
 export default function TeacherLayout() {
   return (
-    <div>
-      <h2>Teacher Layout</h2>
+    <DashboardLayout>
       <Outlet />
-    </div>
+    </DashboardLayout>
   );
 }
