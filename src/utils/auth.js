@@ -21,3 +21,6 @@ export const getUserRole = () => {
   const user = getStoredUser();
   return user?.user?.role;
 };
+export const logout = () => {
+  localStorage.removeItem("user");
+};
