@@ -29,7 +29,7 @@ export default function AssignedStudents() {
                 <TableBody>
                     {students.map((student) => (
                         <TableRow key={student.id}>
-                            <TableCell>{student.first_name}{student.last_name}</TableCell>
+                            <TableCell>{student.first_name} {student.last_name}</TableCell>
                             <TableCell>{student.roll_no}</TableCell>
                             <TableCell>{student.email}</TableCell>
                             <TableCell>{student.phone}</TableCell>
