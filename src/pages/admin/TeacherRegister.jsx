@@ -70,9 +70,9 @@ export default function RegisterTeacher() {
                         fullWidth
                         label="Phone"
                         {...register("phone", {
-                            required: "Phone is required", maxLength: {
-                                value: 10,
-                                message: "Phone number must be 10"
+                            required: "Phone is required", pattern: {
+                                value: /^[0-9]{10}$/,
+                                message: "Phone number must be exactly 10 digits"
                             }
                         })}
                         error={!!errors.phone}

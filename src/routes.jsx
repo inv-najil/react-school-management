@@ -6,22 +6,22 @@ import StudentLayout from "./layouts/StudentLayout";
 import AdminDashboard from "./pages/admin/Dashboard";
 import TeacherDashboard from "./pages/teacher/Dashboard";
 import StudentDashboard from "./pages/student/Dashboard";
-import AuthWrapper from "./components/AuthWrapper";
+import withAuth from "./hoc/withAuth";
 import RegisterStudent from "./pages/admin/StudentRegister";
 import RegisterTeacher from "./pages/admin/TeacherRegister";
 import Students from "./pages/admin/ListofStudents";
 import Teachers from "./pages/admin/ListofTeachers";
 import AssignedStudents from "./pages/teacher/AssignedStudents";
 
+const ProtectedAdminLayout = withAuth(AdminLayout, "admin");
+const ProtectedTeacherLayout = withAuth(TeacherLayout, "teacher");
+const ProtectedStudentLayout = withAuth(StudentLayout, "student");
+
 const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
     {
         path: "/admin",
-        element: (
-            <AuthWrapper allowedRole="admin">
-                <AdminLayout />
-            </AuthWrapper>
-        ),
+        element: <ProtectedAdminLayout />,
         children: [
             { index: true, element: <AdminDashboard /> },
             { path: "register-student", element: <RegisterStudent /> },
@@ -32,11 +32,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/teacher",
-        element: (
-            <AuthWrapper allowedRole="teacher">
-                <TeacherLayout />
-            </AuthWrapper>
-        ),
+        element: <ProtectedTeacherLayout />,
         children: [
             { index: true, element: <TeacherDashboard /> },
             { path: "assigned-students", element: <AssignedStudents /> },
@@ -44,11 +40,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/student",
-        element: (
-            <AuthWrapper allowedRole="student">
-                <StudentLayout />
-            </AuthWrapper>
-        ),
+        element: <ProtectedStudentLayout />,
         children: [
             { index: true, element: <StudentDashboard /> },
         ],
