@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import { TextField, Button, Typography, Container, Box, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { loginAPI } from "../api/authService";
+import { useDispatch } from "react-redux";
+import { login } from "../slices/authSlice";
+
 
 export default function Login() {
-    const { login } = useAuth();
+    
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
@@ -16,7 +19,7 @@ export default function Login() {
     const onSubmit = async (formData) => {
         try {
             const response = await loginAPI(formData);
-            login(response.data);
+            dispatch(login(response.data));
 
             const { is_superuser, role } = response.data.user;
             navigate(is_superuser ? "/admin" : `/${role}`);
