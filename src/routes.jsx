@@ -11,6 +11,7 @@ import RegisterStudent from "./pages/admin/StudentRegister";
 import RegisterTeacher from "./pages/admin/TeacherRegister";
 import Students from "./pages/admin/ListofStudents";
 import Teachers from "./pages/admin/ListofTeachers";
+import AssignedStudents from "./pages/teacher/AssignedStudents";
 
 const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
         ),
         children: [
             { index: true, element: <TeacherDashboard /> },
+            { path: "assigned-students", element: <AssignedStudents /> },
         ],
     },
     {

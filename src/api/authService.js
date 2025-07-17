@@ -1,7 +1,7 @@
 
 
-import API from "./axios"; 
-import { getRefreshToken } from "../utils/auth";
+import API from "./axios";
+import { getRefreshToken, getStoredUser } from "../utils/auth";
 
 
 export const loginAPI = (data) => {
@@ -18,3 +18,14 @@ export const refreshToken = () => {
   const refresh = getRefreshToken();
   return API.post("/token/refresh/", { refresh });
 };
+
+export const assingnedStudentApi = () => {
+  const data = getStoredUser();
+  const user = data?.user;
+  if (user?.role === "teacher" && user?.teacher_id) {
+    return API.get(`/students/assigned-to/${user.teacher_id}/`);
+  } else {
+    return Promise.reject("Invalid user or teacher_id");
+  }
+};
+
