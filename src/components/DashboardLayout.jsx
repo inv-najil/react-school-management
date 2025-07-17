@@ -44,7 +44,7 @@ export default function DashboardLayout({ children }) {
         logout();
         navigate("/login");
     }
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const authData = getStoredUser();
     const user = authData?.user;
     const role = isAdmin() ? "admin" : user?.role;

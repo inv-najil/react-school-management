@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { getUserRole, isAdmin } from "../utils/auth";
+import { useSelector } from "react-redux";
 
 const withAuth = (WrappedComponent, allowedRole) => {
     return (props) => {
-        const { user } = useAuth();
+        const { user } = useSelector((state)=>state.auth);
         const role = getUserRole();
 
         if (!user) return <Navigate to="/login" />;
