@@ -13,7 +13,7 @@ import API from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 
 export default function RegisterStudent() {
-  const { register, handleSubmit, formState: { errors },watch } = useForm();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const [teachers, setTeachers] = useState([]);
   const navigate = useNavigate();
   const password = watch("password")
@@ -29,7 +29,7 @@ export default function RegisterStudent() {
         setTeachers([]);
       });
   }, []);
-  
+
 
   const onSubmit = async (data) => {
     try {
@@ -54,24 +54,47 @@ export default function RegisterStudent() {
         </Typography>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <TextField fullWidth label="Username" {...register("username", { required: "Username is required" })} margin="normal" />
-          <TextField fullWidth label="Email" {...register("email", { required: "email is required", pattern:{
-            value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-            message:"Invalid Formate"
-          } })} margin="normal" />
-          <TextField fullWidth label="Phone" {...register("phone", { required: "Phone number is required", maxLength:{
-            value : 10,
-            message: "Phone Number must to 10 characters"
-          } })} margin="normal" />
+          <TextField fullWidth label="Username" {...register("username", { required: "Username is required" })}
+            error={!!errors.username}
+            helperText={errors.username?.message}
+            margin="normal" />
+          <TextField fullWidth label="Email" {...register("email", {
+            required: "email is required", pattern: {
+              value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+              message: "Invalid Formate"
+            }
+          })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            margin="normal" />
+          <TextField fullWidth label="Phone" {...register("phone", {
+            required: "Phone number is required", pattern: {
+              value: /^[0-9]{10}$/,
+              message: "Phone number must be exactly 10 digits"
+            }
+          })}
+            error={!!errors.phone}
+            helperText={errors.phone?.message}
+            margin="normal" />
           <TextField fullWidth label="First Name" {...register("first_name")} margin="normal" />
           <TextField fullWidth label="Last Name" {...register("last_name")} margin="normal" />
-          <TextField fullWidth label="Password" type="password" {...register("password", { required: "Password is required", minLength:{
-            value : 8,
-            message : "Password must be 8 characters long"
-          } })} margin="normal" />
-          <TextField fullWidth label="Confirm Password" type="password" {...register("password2", { required: "Please confirm password", validate: (val)=>{
-            val === password || "Passwords must match"
-          } })} margin="normal" />
+          <TextField fullWidth label="Password" type="password" {...register("password", {
+            required: "Password is required", minLength: {
+              value: 8,
+              message: "Password must be 8 characters long"
+            }
+          })}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            margin="normal" />
+          <TextField fullWidth label="Confirm Password" type="password" {...register("password2", {
+            required: "Please confirm password", validate: (val) => {
+              val === password || "Passwords must match"
+            }
+          })}
+            error={!!errors.password2}
+            helperText={errors.password2?.message}
+            margin="normal" />
 
           <TextField fullWidth label="Roll No" {...register("roll_no")} margin="normal" />
           <TextField fullWidth label="Grade" {...register("grade")} margin="normal" />
