@@ -16,7 +16,7 @@ export default function AssignedStudents() {
         fetchData();
     }, [])
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
             <Table>
                 <TableHead>
                     <TableRow>
