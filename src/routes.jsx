@@ -14,6 +14,7 @@ import Teachers from "./pages/admin/ListofTeachers";
 import AssignedStudents from "./pages/teacher/AssignedStudents";
 import ResetPassword from "./pages/PasswordReset";
 import ResetPasswordConfirm from "./pages/PasswordResetConfirm";
+import ImportCsv from "./pages/admin/AddStudentsCsv";
 
 const ProtectedAdminLayout = withAuth(AdminLayout, "admin");
 const ProtectedTeacherLayout = withAuth(TeacherLayout, "teacher");
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
             { path: "register-teacher", element: <RegisterTeacher /> },
             { path: "list-students", element: <Students /> },
             { path: "list-teachers", element: <Teachers /> },
+            { path: "import-csv", element: <ImportCsv /> },
         ]
     },
     {
