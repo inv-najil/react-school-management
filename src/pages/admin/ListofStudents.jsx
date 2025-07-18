@@ -33,7 +33,7 @@ export default function Students() {
                 Students List
             </Typography>
 
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
                 <Table>
                     <TableHead>
                         <TableRow>

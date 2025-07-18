@@ -14,7 +14,7 @@ export default function StudentDashboard() {
       })
   }, [])
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
       <Table>
         <TableHead>
           <TableRow>
