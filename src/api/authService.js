@@ -40,5 +40,11 @@ export const assingnedStudentApi = () => {
   }
 };
 
-
+export const importStudentsCSV = (formData) => {
+  return API.post("/students/import-csv/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
 

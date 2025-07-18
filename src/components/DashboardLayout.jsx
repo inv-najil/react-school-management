@@ -28,6 +28,7 @@ const menuItemsByRole = {
         { label: "Register Teacher", path: "/admin/register-teacher" },
         { label: "List Students", path: "/admin/list-students" },
         { label: "List Teachers", path: "/admin/list-teachers" },
+        { label: "Import students through csv", path: "/admin/import-csv" }
     ],
     teacher: [
         { label: "Dashboard", path: "/teacher" },
