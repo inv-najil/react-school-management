@@ -12,6 +12,8 @@ import RegisterTeacher from "./pages/admin/TeacherRegister";
 import Students from "./pages/admin/ListofStudents";
 import Teachers from "./pages/admin/ListofTeachers";
 import AssignedStudents from "./pages/teacher/AssignedStudents";
+import ResetPassword from "./pages/PasswordReset";
+import ResetPasswordConfirm from "./pages/PasswordResetConfirm";
 
 const ProtectedAdminLayout = withAuth(AdminLayout, "admin");
 const ProtectedTeacherLayout = withAuth(TeacherLayout, "teacher");
@@ -19,6 +21,8 @@ const ProtectedStudentLayout = withAuth(StudentLayout, "student");
 
 const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
+    { path: "/reset", element: <ResetPassword /> },
+    { path: "/password-reset-confirm/:uidb64/:token", element: <ResetPasswordConfirm /> },
     {
         path: "/admin",
         element: <ProtectedAdminLayout />,

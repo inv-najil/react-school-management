@@ -14,6 +14,17 @@ export const registerAPI = (data) => {
 };
 
 
+export const resetPasswordApi = (email) => {
+  return API.post('/password-rest', { email });
+};
+
+export const resetPasswordConfirmApi = ({ uid, token, new_password }) => {
+  return API.post(`password-reset-confirm/${uid}/${token}/`, {
+    new_password
+  });
+};
+
+
 export const refreshToken = () => {
   const refresh = getRefreshToken();
   return API.post("/token/refresh/", { refresh });
@@ -28,4 +39,6 @@ export const assingnedStudentApi = () => {
     return Promise.reject("Invalid user or teacher_id");
   }
 };
+
+
 
