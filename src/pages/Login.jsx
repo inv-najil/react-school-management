@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import { TextField, Button, Typography, Container, Box, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { loginAPI } from "../api/authService";
@@ -7,7 +8,7 @@ import { login } from "../slices/authSlice";
 
 
 export default function Login() {
-    
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {
@@ -65,6 +66,9 @@ export default function Login() {
                         Login
                     </Button>
                 </form>
+                <Typography variant="body2">
+                    <Link to="/reset">Forgot Password?</Link>
+                </Typography>
             </Paper>
         </Container>
     );
