@@ -63,6 +63,8 @@ export default function DashboardLayout({ children }) {
                     zIndex: 1300,
                     ml: open ? `${drawerWidth}px` : 0,
                     transition: "margin 0.3s ease",
+                    bgcolor: "#9ECAD6",
+                    color: "black",
                 }}
             >
                 <Toolbar>
@@ -91,7 +93,10 @@ export default function DashboardLayout({ children }) {
                         width: drawerWidth,
                         boxSizing: "border-box",
                         transition: "width 0.3s ease",
+                        bgcolor: "#748DAE",
+                        color: "white",
                     },
+
                 }}
             >
                 <Toolbar />
