@@ -15,6 +15,9 @@ import AssignedStudents from "./pages/teacher/AssignedStudents";
 import ResetPassword from "./pages/PasswordReset";
 import ResetPasswordConfirm from "./pages/PasswordResetConfirm";
 import ImportCsv from "./pages/admin/AddStudentsCsv";
+import CreateExam from "./pages/teacher/Exam";
+import ExamList from "./pages/student/ExamList";
+import TakeExam from "./pages/student/TakeExam";
 
 const ProtectedAdminLayout = withAuth(AdminLayout, "admin");
 const ProtectedTeacherLayout = withAuth(TeacherLayout, "teacher");
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <TeacherDashboard /> },
             { path: "assigned-students", element: <AssignedStudents /> },
+            { path: "create-exam", element: <CreateExam /> },
         ],
     },
     {
@@ -49,6 +53,8 @@ const router = createBrowserRouter([
         element: <ProtectedStudentLayout />,
         children: [
             { index: true, element: <StudentDashboard /> },
+            { path: "list-exams", element: <ExamList /> },
+            { path: "exams/:examId", element: <TakeExam /> },
         ],
     },
 
