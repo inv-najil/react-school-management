@@ -33,9 +33,11 @@ const menuItemsByRole = {
     teacher: [
         { label: "Dashboard", path: "/teacher" },
         { label: "List Assigned Students", path: "/teacher/assigned-students" },
+        { label: "Create exam", path: "/teacher/create-exam" },
     ],
     student: [
         { label: "Dashboard", path: "/student" },
+        { label: "List exams", path: "/student/list-exams" },
     ],
 };
 

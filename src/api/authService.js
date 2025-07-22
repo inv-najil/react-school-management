@@ -48,3 +48,30 @@ export const importStudentsCSV = (formData) => {
   });
 };
 
+export const examCreation = (data) => {
+  return API.post("/exams/", data);
+};
+
+export const addQuestions = (examId, data) => {
+  return API.post(`/exams/${examId}/add-questions/`, data);
+};
+
+export const fetchAllExams = () => {
+  return API.get("/exams/")
+};
+
+export const fetchExamQuestions = (examId) => {
+  return API.get(`/exams/${examId}/questions/`)
+};
+
+export const submitExam = (examId, payload) => {
+  return API.post(`/exams/${examId}/submit/`, payload)
+};
+
+export const fetchResult = (examId) => {
+  return API.get(`/exams/${examId}/results/`);
+};
+
+export const fetchExamDetails = (examId) => {
+  return API.get(`/exams/${examId}/`);
+};
