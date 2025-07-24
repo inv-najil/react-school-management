@@ -18,6 +18,8 @@ import ImportCsv from "./pages/admin/AddStudentsCsv";
 import CreateExam from "./pages/teacher/Exam";
 import ExamList from "./pages/student/ExamList";
 import TakeExam from "./pages/student/TakeExam";
+import EditStudent from "./pages/admin/EditStudent";
+import EditTeacher from "./pages/admin/EditTeacher";
 
 const ProtectedAdminLayout = withAuth(AdminLayout, "admin");
 const ProtectedTeacherLayout = withAuth(TeacherLayout, "teacher");
@@ -33,6 +35,8 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <AdminDashboard /> },
             { path: "register-student", element: <RegisterStudent /> },
+            { path: "students/edit/:id", element: <EditStudent /> },
+            { path: "teachers/edit/:id", element: <EditTeacher /> },
             { path: "register-teacher", element: <RegisterTeacher /> },
             { path: "list-students", element: <Students /> },
             { path: "list-teachers", element: <Teachers /> },

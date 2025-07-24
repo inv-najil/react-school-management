@@ -1,8 +1,11 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography, Pagination } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography, Pagination, IconButton, Tooltip } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import API from "../../api/axios";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 export default function Students() {
+    const navigate = useNavigate();
     const [students, setStudent] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +28,18 @@ export default function Students() {
         setSearchParams({ page: value });
     };
     const totalPages = Math.ceil(totalCount / pageSize)
+
+    const handleDelete = async (id) => {
+        const confirm = window.confirm("Are you sure want to delete student?")
+        if (!confirm) return;
+        try {
+            await API.delete(`/students/${id}/`);
+            setStudent(prev => prev.filter(s => s.id !== id));
+        } catch (err) {
+            console.error("Failed to delete student", err);
+            alert("Failed to delete student. Please try again.");
+        }
+    };
 
 
     return (
@@ -52,6 +67,18 @@ export default function Students() {
                                 <TableCell>{student.roll_no}</TableCell>
                                 <TableCell>{student.email}</TableCell>
                                 <TableCell>{student.assigned_teacher}</TableCell>
+                                <TableCell>
+                                    <Tooltip title="Edit">
+                                        <IconButton onClick={() => { navigate(`/admin/students/edit/${student.id}`) }}>
+                                            <EditIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Delete">
+                                        <IconButton onClick={() => { handleDelete(student.id) }}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
